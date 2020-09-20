@@ -1,1 +1,0 @@
-# CompetiveProgramming20-21

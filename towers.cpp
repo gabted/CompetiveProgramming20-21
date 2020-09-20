@@ -4,7 +4,8 @@
 /*
 	Execution time on CodeForces: 92 ms 
 	
-	Complexity: For this problem, there were two ways:
+	Complexity: O(n)
+		For this problem, there were two ways:
 			-minimize time complexity, and use a hashmap for counting occurencies in linear time
 			-minimize space complexity, and sort the input in costant space
 		I preferred the first approach, which has a linear time complexity, but has to allocate a hashmap 
