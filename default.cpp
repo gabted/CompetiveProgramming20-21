@@ -8,7 +8,7 @@
 		
 	Time complexity:
 			
-	Space complexity: O(n)
+	Space complexity:
 		
 */
 
