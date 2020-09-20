@@ -1,6 +1,16 @@
 #include <iostream>
 #include <vector>
 
+/*
+	Execution time on G4G: 
+	
+	Correctness:
+		
+	Time complexity:
+			
+	Space complexity: O(n)
+		
+*/
 
 int main() {
 
