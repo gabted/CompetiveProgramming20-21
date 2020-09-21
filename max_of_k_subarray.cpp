@@ -7,7 +7,7 @@
 	
 	Time complexity: O(n*log(k))
 		The algorithm represents the current window with a multiset (with logarithmic insertion, 
-		extraction and query time). Calculating the maximum for n-k+1 windows, this algorithm executes in O(n*log(k))
+		extraction and query time). Calculating the maximum for n-k+1 windows, this algorithm executes in O(n*log(k)).
 	
 	Space complexity: O(k)
 		Due to the balanced BST implementation of the multiset

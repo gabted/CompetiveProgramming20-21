@@ -12,10 +12,16 @@
 		The same reasoning applyes to the second-best possible team, and so on, given that the non optimal team referring
 		to already paired players should be discarded.
 		
-	Time complexity: O
-		The
-	Space complexity:
+	Time complexity: O(nlogn) in the worst case
+		The input is organized in a heap, by a call of std::make_heap which runs in linear time (only the first half 
+		of the vector needs to be heapified). By extracting the best rated teams one after the other, we got slightly better
+		time ccomplexity then simply sorting the input. Sorting in fact would cost O(n*logn) moves, while heapifying and extracting
+		cost O(n + log(n) + log(n) + 1og(n-1) + ...). If the input is sorted in the worst possible way, the complexity will be O(nlogn), 
+		but that's not the averag case.
 		
+	Space complexity: O(sqrt(n))
+		the only auxiliary data structure used is a vector to store the already computed output. With n+1 players,
+		the input consist of Tn different ratings, where Tn is the n-th Triangular Number, and so is quadratic with respect to n.		
 */
 
 struct Team{
