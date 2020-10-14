@@ -81,8 +81,7 @@ int main() {
 	}
 	
 	//elaborate data
-	uint64_t output = count_number_of_ways(vec, totalSum);
-	cout << output;
+	cout << count_number_of_ways(vec, totalSum);
 	
 	//clear data
 	vec.clear();
