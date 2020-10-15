@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+using namespace std;
 
 /*
 	Execution time on G4G: 
@@ -18,9 +19,9 @@ int main() {
     std::cin >> num_test_cases;
 
     std::vector<int> vec;
+	int n {};
     for (int k {}; k < num_test_cases; ++k) {
 		//collect data
-		int n {};
         std::cin >> n;
         vec.reserve(n);
         for (int i {}; i < n; ++i) {
