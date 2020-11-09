@@ -3,11 +3,11 @@
 #include <vector>
 #include <math.h>
 #include <limits>
-#include <string>
+#include <cstring>
 using namespace std;
 
 /*
-	Execution time on G4G: 
+	Execution time on G4G: 1310ms
 	
 	Correctness:
 		
@@ -176,23 +176,22 @@ int main() {
 	cout<<tree.circular_get_min(0, 1)<<endl;
 	cout<<tree.circular_get_min(2, 1)<<endl; */
 	
-	string line;
-	string token; 
-	vector <int> tokens; 
 	std::cin >> k;
-	std::getline(std::cin, line);
+	char line[30];
+	cin.getline(line, 30);	//reads the line containing k
+	int start {}, end {}, value {};
+	char *temp;
 	for(int i = 0; i<k; ++i){
-		std::getline(std::cin, line);
-		std::stringstream stream(line); 
-		// Tokenizing w.r.t. space ' ' 
-		while(getline(stream, token, ' '))
-			tokens.push_back(std::stoi(token));
-		if(tokens.size() == 2)
-			cout<<tree.circular_get_min(tokens[0], tokens[1])<<endl;
-		else
-			tree.circular_range_update(tokens[0], tokens[1], tokens[2]);
-		
-		tokens.clear();
+		cin.getline(line, 30);
+		start = atoi(strtok(line, " "));
+		end = atoi(strtok(NULL, " "));
+		temp = strtok(NULL, " ");
+		if(temp == NULL)
+			cout<<tree.circular_get_min(start, end)<<endl;
+		else{
+			value = atoi(temp);
+			tree.circular_range_update(start, end, value);
+		}
 	}
 
     return 0;
