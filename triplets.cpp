@@ -3,6 +3,14 @@
 #include <math.h>
 using namespace std;
 
+/*
+    time complexity: O(nlog)
+        for each value, the algorithm compute a finite number of segtree
+        sums and updates, fora total timecoast of O(nlogn)
+    space complexity: O(n)
+        for allocating the segtree
+*/
+
 template<class T>
 class SumSegTree{
 	private:
@@ -104,6 +112,17 @@ int main(){
             vec.push_back(x);
         }
 	
+    //proceding backward, we can keep in two segtrees, Js and Ks,
+    //the number of possible js and ks for each possible i value
+    //More in detail, Ks[a] = b means that, scanning the array backward
+    //we already found b possible "k values" for which vec[k] = a.
+    //With this information, computing Ks.sum(a, b) means computing
+    //Ks[a] + Ks[a+1] + Ks[a+2] ... Ks[b], i.e. 
+    //Ks.sums(a, n) = #{k | vec[k] >= a && vec[k] <= n} = #{k | vec[k] >= x}
+    //So with a single Ks.sum, we can know, for each possible j, all the possible ks that
+    //satisfy the condition. This number of ks can be stored in a different segtree,
+    //so that we have that Js[a] = b means that scanning the array backward
+    //we already found b couples (y, k) where vec[y] = a and vec[y] < vec[k].
 	int64_t total {};
 	for(int i {n-1}; i>=0; --i){
 		if(i <= n-3){
