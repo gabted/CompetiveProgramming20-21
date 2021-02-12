@@ -12,7 +12,8 @@
 		A[i+1]..A[n], to find the next greater element of i it is sufficient to scan S and select the 
 		first element greater than i.
 		In order to find the optimal data structure for S, it's relevant the following propriety:
-			For all i, if Exixst j<i s.t. A[i] > A[j], A[i] will never be the next greater element for any
+			For all i, if Exixst j<i s.t. A[i] < A[j], A
+			[i] will never be the next greater element for any
 			z<=j.
 		In a intuitive sense, every search for a next greater element starting before j, will stop at most at A[j], 
 		and never reach A[i]. This mean that A[i] can effectively be discarded from S, as soon as we find a j-th
