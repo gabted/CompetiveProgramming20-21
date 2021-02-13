@@ -33,7 +33,7 @@ struct query{
 	int index;
 };
 
-bool compare(query a, query b){
+bool compare(query &a, query &b){
 	int bucket_a = a.l / buckSize;
 	int bucket_b = a.l / buckSize;
 	if(bucket_a == bucket_b)
@@ -44,7 +44,7 @@ bool compare(query a, query b){
 	return true;
 }
 
-bool reorder(query a, query b){
+bool reorder(query &a, query &b){
 	return a.index < b.index;
 }
 
@@ -103,8 +103,8 @@ int main() {
 	int curr_l = 0;
 	int curr_r = 0;
 	//counters = std::unordered_map<int, int64_t>();
-	counters.max_load_factor(0.25);
-	counters.reserve(n);
+	//counters.max_load_factor(0.25);
+	counters.rehash(n);
 	for(int k {}; k<t; k++){
 		query q = queries[k];
 		while(curr_l < q.l){

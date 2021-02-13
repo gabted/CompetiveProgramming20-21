@@ -49,7 +49,7 @@ struct query{
 	int index;
 };
 
-bool compare(query a, query b){
+bool compare(query &a, query &b){
 	int bucket_a = a.l / buckSize;
 	int bucket_b = a.l / buckSize;
 	if(bucket_a == bucket_b)
@@ -60,7 +60,7 @@ bool compare(query a, query b){
 	return true;
 }
 
-bool reorder(query a, query b){
+bool reorder(query &a, query &b){
 	return a.index < b.index;
 }
 
