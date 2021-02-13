@@ -6,13 +6,6 @@ using namespace std;
 /*
 	Execution time on codeforces: 1107 ms
 	
-	Lemma: low contains only fire spells <=> high contains only lightning spells
-	
-	Lemma: low is empty => high contains only lightning spells, possibly zero
-		this is true if high is empty.
-		if high has size k, there are k lightning spells, that are all in high cause low is empty
-		high cannot contain fire spells, because it has size k.
-	
 	Correctness:
 		Let k be the number of lightning spells. THis algorithm divides the spells currently inserted
 		into two set, high and log. High contains the top k spells (w.r.t. power), and grows and shrinks
