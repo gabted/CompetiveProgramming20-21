@@ -29,7 +29,7 @@ int64_t partial_result {};
 struct query{
 	int l;
 	int r;
-	int result;
+	int64_t result;
 	int index;
 };
 
@@ -71,15 +71,17 @@ void remove(int p){
 int main() {
 	int n {};
 	int t {};
-	std::cin >> n;
-	std::cin >> t;
+	scanf("%d%d", &n, &t);
+	//std::cin >> n;
+	//std::cin >> t;
 	
 	//collect data
 	vec.reserve(n+1);
 	vec.push_back(0);
 	for (int i {}; i < n; ++i) {
 		int x {};
-		std::cin >> x;
+		scanf("%d", &x);
+		//std::cin >> x;
 		vec.push_back(x);
 	}
 	
@@ -90,8 +92,9 @@ int main() {
 	for (int i {}; i < t; ++i) {
 		int x {};
 		int y {};
-		std::cin >> x;
-		std::cin >> y;
+		scanf("%d%d", &x, &y);
+		//std::cin >> x;
+		//std::cin >> y;
 		queries.push_back({x, y, 0, i});
 	}
 	//sorting queries
@@ -104,7 +107,7 @@ int main() {
 	int curr_r = 0;
 	//counters = std::unordered_map<int, int64_t>();
 	//counters.max_load_factor(0.25);
-	counters.rehash(n);
+	counters.rehash(n+1);
 	for(int k {}; k<t; k++){
 		query q = queries[k];
 		while(curr_l < q.l){

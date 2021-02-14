@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 /*
@@ -44,10 +45,14 @@ class Frog{
 	}
 };
 
-/*void print(map<int, int> map, vector<Frog> &frogs){
+//global variable
+vector<Frog> frogs;
+
+
+void print(map<int, int> map, vector<Frog> &frogs){
 	for(auto it = map.begin(); it != map.end(); ++it)
 		cout << it->first << "\t" << frogs[it->second].tongue  << endl;
-}*/
+}
 
 int main() {
 
@@ -57,25 +62,48 @@ int main() {
 	//collect frogs
 	std::cin >> n;
 	std::cin >> m;
+	frogs.reserve(n);
+	vector<int> sortedFrogs;
+	sortedFrogs.reserve(n);
 	std::map<int, int> map;
-	vector<Frog> frogs;
 	int x {};
 	int y {};
 	for (int i {}; i < n; ++i) {
-		std::cin >> x;
-		std::cin >> y;
-		frogs.push_back(Frog(x, y));
-		map.insert({x, i});
+		scanf("%d%d ", &x, &y);
+		Frog f = Frog(x, y);
+		frogs.push_back(f);
+		sortedFrogs.push_back(i);
 	}
-	//cout <<"collected data:"<<endl;
-	//print(map, frogs);
-	
+
+	sort(sortedFrogs.begin(), sortedFrogs.end(), [](auto& a, auto& b) { return frogs[a].pos < frogs[b].pos; });
+    int max_end = -1;
+    for(auto f : sortedFrogs){
+        if(frogs[f].pos <= max_end) {//it's totally or partially contained
+			if(frogs[f].end() <= max_end){
+				//this frog is inaccessible, skip
+			}
+			else{
+				int new_pos = max_end+1;
+				int new_tongue = frogs[f].tongue - (new_pos - frogs[f].pos);	//new tongue = old tongue - difference of pos
+				frogs[f].set(new_pos, new_tongue);
+				//insert pair (pos, index) into map
+				map.insert({new_pos, f});
+				max_end = frogs[f].end();
+			}
+		}
+		else{	//it's outside
+			//insert pair (pos, index) into map
+			map.insert({frogs[f].pos, f});
+            max_end = frogs[f].end();
+        }
+	}
+
 	
 	//normalize data, removing inaccessible frogs and resizing overlapping frogs to
 	//eliminate overlapping
 	auto prev = map.begin();
 	auto curr = next(prev, 1);
-	while(curr != map.end()){
+	/*while(curr != map.end()){
 		int p = prev->second;
 		int c = curr->second;
 		if(frogs[c].pos <= frogs[p].end()){
@@ -100,13 +128,16 @@ int main() {
 			prev = curr;
 			++curr;
 		}
-	}
+	}*/
+	
+	//cout <<"collected data:"<<endl;
+	//print(map, frogs);
 
 
 	//eat mosquitoes
 	int pos;
 	int value;
-	std::map<int, int> uneaten;
+	std::multimap<int, int> uneaten;
 	for (int i {}; i < m; ++i) {
 		std::cin >> pos;
 		std::cin >> value;
@@ -171,13 +202,14 @@ int main() {
 		cout << f.mosquitoEaten << " "<< f.real_tongue<< endl;
 	
 	/*
-		5 2
+		5 3
 		3 2
 		2 4	
 		10 5
 		9 2
 		14 1
 		8 1
+		8 2
 		5 2
 	*/
 	
