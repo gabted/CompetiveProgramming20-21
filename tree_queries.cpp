@@ -7,13 +7,19 @@
 using namespace std;
 
 /*
-	Execution time on G4G: 
+	Execution time on codeforces: time limit exeeded on test 21
 	
-	Correctness:
+	Correctness: 
+		This algorithm flattens the tree into an array, storing for eeach node the starting
+		and ending point of the sequence on colors corresponding to that subtree.
+		Then uses Mo algorithm to upgrade 2 data structures:
+			-colorFrequency[c] says how frequent is a color, i.e. 
+				how many occurencies are of the color c in the current range
+			-colorsMoreFrequentThen[k] says how many colors are more frequent than k 
 		
-	Time complexity:
+	Time complexity: O((n + q) sqrt n)
 			
-	Space complexity:
+	Space complexity: O(n)
 		
 */
 

@@ -10,10 +10,12 @@ using namespace std;
 	Execution time on G4G: 1310ms
 	
 	Correctness:
-		
-	Time complexity:
+			This algorithm uses a Persistent Segment Tree to implement dymanic RMQ,
+			and splits every circular rmq in two different, normal-ordered rmq.
 			
-	Space complexity:
+	Time complexity: O(n + mlogn), to construct the tree and to do the queries
+			
+	Space complexity: O(n)
 		
 */
 

@@ -9,10 +9,13 @@ using namespace std;
 	Execution time on G4G: 
 	
 	Correctness:
+		This algorithm sorts both the data and the queries (w.r.t. X), and then 
+		executes a query (i, j, X) only after inserting into a sum segtree a value 1
+		for all the datas smaller then X.
 		
-	Time complexity:
+	Time complexity: O(nlogn + m(logm + logn))
 			
-	Space complexity:
+	Space complexity: O(n)
 		
 */
 
@@ -176,9 +179,6 @@ int main() {
         cout << q.result << endl;
     
     
-    
-    
-    //elaborate data
     
 
     return 0;

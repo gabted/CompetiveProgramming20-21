@@ -5,13 +5,13 @@
 using namespace std;
 
 /*
-	Execution time on codeforces: 
+	Execution time on codeforces: 1465ms
 	
 	Correctness: algorithm presented in class
 		
-	Time complexity:
+	Time complexity: O(nlogn + m(logn + logm))
 			
-	Space complexity:
+	Space complexity: O(n+m)
 		
 */
 

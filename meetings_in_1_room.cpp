@@ -1,4 +1,17 @@
-//exec time = 0.59
+/*
+	Execution time on g4g: 0.57ms
+	
+	Correctness:
+		The algorithm was presented in class
+		
+	Time complexity:  O(nlogn)
+			
+	Space complexity: O(n)
+		
+*/
+
+
+
 int maxMeetings(int start[], int end[], int n) {
     // Your code here
     vector<int> meetings = vector<int>(n);
